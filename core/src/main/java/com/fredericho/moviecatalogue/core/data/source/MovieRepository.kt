@@ -10,6 +10,7 @@ import com.fredericho.moviecatalogue.core.domain.repository.IMovieRepository
 import com.fredericho.moviecatalogue.core.utils.AppExecutor
 import com.fredericho.moviecatalogue.core.utils.DataMapper
 import com.fredericho.moviecatalogue.core.data.source.remote.response.Movies
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -43,6 +44,7 @@ class MovieRepository(
             }
         }.asFlow()
 
+    @ExperimentalCoroutinesApi
     override fun getDetailMovie(movieId: Int): Flow<Resource<Movie>> =
         object : NetworkBoundRepository<Movie, DetailMovies>(){
             override fun loadFromDB(): Flow<Movie> =

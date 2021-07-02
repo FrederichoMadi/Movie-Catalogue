@@ -88,6 +88,7 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
+    @Suppress("DEPRECATION")
     private fun shareClick(movies : Movie){
         binding.imgShare.setOnClickListener {
             ShareCompat.IntentBuilder

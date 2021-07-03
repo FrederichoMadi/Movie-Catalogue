@@ -8,6 +8,8 @@ import com.fredericho.moviecatalogue.core.data.source.remote.RemoteDataSource
 import com.fredericho.moviecatalogue.core.data.source.remote.network.ApiService
 import com.fredericho.moviecatalogue.core.domain.repository.IMovieRepository
 import com.fredericho.moviecatalogue.core.utils.AppExecutor
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -19,10 +21,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<MoviesDatabase>().movieDao() }
     single {
+        val passphrase : ByteArray = SQLiteDatabase.getBytes("fredericho".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             MoviesDatabase::class.java, "movie.db"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 

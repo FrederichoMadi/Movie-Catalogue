@@ -13,7 +13,7 @@ object DataMapper {
                 it.id,
                 it.title,
                 it.overview,
-                it.date,
+                "",
                 it.poster,
                 it.rating,
                 "" ,

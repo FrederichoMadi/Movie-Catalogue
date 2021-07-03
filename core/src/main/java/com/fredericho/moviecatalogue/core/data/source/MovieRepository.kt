@@ -44,11 +44,10 @@ class MovieRepository(
             }
         }.asFlow()
 
-    @ExperimentalCoroutinesApi
     override fun getDetailMovie(movieId: Int): Flow<Resource<Movie>> =
         object : NetworkBoundRepository<Movie, DetailMovies>(){
             override fun loadFromDB(): Flow<Movie> =
-                localDataSource.getDetailMovies(movieId).mapLatest {
+                localDataSource.getDetailMovies(movieId).map {
                     DataMapper.mapEntityToDomain(it)
                 }
 

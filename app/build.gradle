@@ -43,10 +43,6 @@ android {
         viewBinding true
     }
 
-    lintOptions{
-        abortOnError false
-    }
-
     dynamicFeatures = [':favorite']
 }
 

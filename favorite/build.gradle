@@ -34,10 +34,9 @@ android {
         viewBinding true
     }
 
-//    lintOptions{
-//        checkReleaseBuilds false
-//        abortOnError false
-//    }
+    lintOptions{
+        abortOnError false
+    }
 }
 
 dependencies {

@@ -1,14 +1,11 @@
 package com.fredericho.moviecatalogue.favorite
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fredericho.moviecatalogue.favorite.databinding.ActivityFavoriteBinding
 import com.fredericho.moviecatalogue.favorite.di.favoriteModule
-import com.fredericho.moviecatalogue.presentation.detail.DetailActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
